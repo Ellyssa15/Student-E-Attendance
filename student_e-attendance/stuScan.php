@@ -2,39 +2,79 @@
     <head>
         <title>STUDENT SCAN QR CODE</title>
         <link rel="stylesheet" href="header.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
         <style>
              body{
             background-color: #FFFDE7;
             background-repeat: no-repeat; 
   	        background-size: cover;
         }
+        button {
+          background-color: #F7D8B5;
+            border-radius: 17px;
+            margin-right: 5px;         
+            font-size: 18px;
+            padding: 10px 50px;
+            margin: 10px 208px;
+            border: none;
+            outline: none;
+            
+        }
+
+        button:hover{
+            background:#857F72
+        }
         </style>
-</head>
-<body> 
+    </head>
+    <body>
     <div class="topnav">
     <section>
             <header>
                 <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
                     <div class="topnav" id="myTopnav">
-                <ul>
-                    <li><a href="stuHome.php">HOME</a></li>
-                    <li><a href="logout.php">LOG OUT</a></li>
-                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
-                </ul>
             </header>
         </section>
-    </div><br><br>
-    <label>MANUALY INPUT STUDENT ID: </label>
-                    <input type="text" name="text" id="text" class="form-control">
-<script type="text/javascript" src="./main.js"></script>
-<script type="text/javascript" src="./llqrcode.js"></script>
+    </div>
+    <br><br><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <video id="preview" width="100%"></video>
+                </div>
+                <div class="col-md-6">
+                    <label>SCAN QR CODE</label>
+                    <input type="text" name="text" id="text" readonyy="" placeholder="scan qrcode" class="form-control">
+                </div>
+            </div>
+        </div>
 
-<div style="display:none" id="result"></div>
-		<div class="selector" id="qrimg" onclick="setimg()" align="right" ></div>
-			<center id="mainbody"><div id="outdiv"></div></center>
-				<canvas id="qr-canvas" width="100" height="100"></canvas>
+        <script>
+           let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
+           Instascan.Camera.getCameras().then(function(cameras){
+               if(cameras.length > 0 ){
+                   scanner.start(cameras[0]);
+               } else{
+                   alert('No cameras found');
+               }
 
-<script type="text/javascript">load();</script>
-<script src="./jquery-1.11.2.min.js"></script>
-                
+           }).catch(function(e) {
+               console.error(e);
+           });
+
+           scanner.addListener('scan',function(c){
+               document.getElementById('text').value=c;
+           });
+
+        </script>
+<br><br><br>
+<div class="button-container">
+    <a href="stuHome.php" class="centered-button">
+        <button>BACK</a></button> </a>
+</div>
+    </body>
+<br>
+<?php require('footer.php'); ?>
 </html>
