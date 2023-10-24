@@ -60,18 +60,12 @@
       </div>
       <div class="form-group">
        <input type="submit" name="sbt-btn" value="QR Generate" class="btn btn-success" />
+       <input type="submit" name="sbt-btn" value="Back" class="btn btn-success" onclick="window.location.href='stuList.php'" />
       </div>
      </form>
     </div>
    </div>  
   </div>
-  <br><br><br>
-  <div class="button-container">
-    <a href="adminHome.php" class="centered-button">
-        <button>HOME</a></button> </a>
-    <a href="logout.php" class="centered-button">
-        <button>LOG OUT</a></button> </a>
-</div>
 </body>
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php require('footer.php'); ?>
