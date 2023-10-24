@@ -5,18 +5,19 @@
 <head>
     <title>GENERATEWARNINGLETTER</title>
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
 <style>
+
   .container {
-            margin-left: 10%;
-            width: 80%;
-            color: hsl(240, 54%, 15%);
+            width: 125%;
+            color: hsl(250, 60%, 15%);
             padding: 0.3rem;
             border: 2px solid #ccc;
-            border-radius: 0.3rem;
+            border-radius: 0.10rem;
             outline: none;
+            background:white;
     }
-
     body {
       background:#FFFDE7
     }
@@ -28,28 +29,22 @@
           font-size: 15px;
           cursor: pointer; 
     }
+
+    <center>
+          <FONT SIZE="1" COLOR="black" font face="Arial"> Copyright @ Student E-Attendance 
 </style
+
+<header>
+    <img src="kypjlogo.jpg" width="270px" heigth="90px">
+</header>
+
+
 <body>
-<div class="topnav">
-    <section>
-            <header>
-                <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
-                    <div class="topnav" id="myTopnav">
-                <ul>
-                    <li><a href="adminHome.php">HOME</a></li>
-                    <li><a href="logout.php">LOG OUT</a></li>
-                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
-                </ul>
-            </header>
-        </section>
-    </div>
-    <br><br><br>
             <div class="container">
 
                         <form action="Generate.php" method="POST">
 
                         <h1>Generate Student Warning Letter</h1>
-                        <p>Fill out the form and your data will fill in a PDF</p>
 
                               <div class="form-group row">
                                     <div class="col-lg-6">
@@ -78,10 +73,11 @@
 
                               </div><br>
 
-                              <button type="submit" class="btn btn-block btn-success">Generate PDF</button><br><br>
-                              <button> Send </button>
+                              <button type="submit" class="btn btn-block btn-success">Send Email</button><br><br>
+                              <button> Save PDF </button>
 
                         </form>
             </div>  
 </body>
+<?php require('footer.php'); ?>
 </html>
