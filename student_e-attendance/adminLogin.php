@@ -1,52 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE HTML>  
 <html>
-    <head>
-        <title>ADMIN LOGIN</title>
-        <link rel="stylesheet" href="login.css">
-        <style>
-          h3 {
-              font-size:30px;
-              color: #000;
-          } 
-          body {
-            background: url(backgroundlogin.jpg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            background-position:center;
-          }
-       
-    </style>
-    </head> 
-    <body>
-<div>
-    <?php
-    session_start();
-    include 'connection.php';
-    if (isset($_POST['submit'])) {
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-        $query=mysql_query("select * from admin_login where username='$username' and password='$password'");
-        $queryRow=mysql_num_rows($query);
-        if($queryRow==TRUE) {
-            $_SESSION['username']=$username;
-            header("location:adminHome.php");
-        }else {
-            echo "<script> alert ('Username atau Password Salah');
-            location='adminLogin.php'; </script>";
-        }
-    }
-    ?>   
-   <br>
-   <div class = "content">
-   <br><h3>ADMIN LOGIN</h3>
-        <form method="post">
-        <img src="login icon.png" class="pic"><input type="text" placeholder="username" required><br><br>
-        <img src="lock.png" class="pic"><input type="password" placeholder="password" required><br>
-        <br><input type="checkbox" name="remember" require> Remember me <br>
-        <br><br><input type="submit" name="submit" value="Log In"></form>
-                
-        </form>        
-    </div>
-</div>
-</body>
+<head>
+    <title>GENERATEWARNINGLETTER</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<style>
 
-    </html>
+  .container {
+            width: 125%;
+            color: hsl(250, 60%, 15%);
+            padding: 0.3rem;
+            border: 2px solid #ccc;
+            border-radius: 0.10rem;
+            outline: none;
+            background:white;
+    }
+    body {
+      background:#FFFDE7
+    }
+
+    button{
+          padding: 6px 20px;
+          border: none;
+          border-radius: 5px;
+          font-size: 15px;
+          cursor: pointer; 
+    }
+
+    <center>
+          <FONT SIZE="1" COLOR="black" font face="Arial"> Copyright @ Student E-Attendance 
+</style
+
+<header>
+    <img src="kypjlogo.jpg" width="270px" heigth="90px">
+</header>
+
+
+<body>
+            <div class="container">
+
+                        <form action="Generate.php" method="POST">
+
+                        <h1>Generate Student Warning Letter</h1>
+
+                              <div class="form-group row">
+                                    <div class="col-lg-6">
+                                                <input type="text" name="fname" class="form-control" placeholder="First name">
+                                    </div><br>
+
+                                    <div class="col-lg-6">
+                                                <input type="text" name="lname" class="form-control" placeholder="Surname" required>
+                                    </div><br>
+                              </div>
+
+                              <div class="form-group row">
+
+                                    <div class="col-lg-6">
+                                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    </div><br>
+
+                                    <div class="col-lg-6">
+                                                <input type="tel" name="phone" class="form-control" placeholder="Phone" required>
+                                    </div><br>
+
+                              </div>
+                              <div class="form-group">
+
+                                   <textarea name="comment  " class="form-control" placeholder="Your comment" rows="10" cols="100" required></textarea>
+
+                              </div><br>
+
+                              <button type="submit" class="btn btn-block btn-success">Send Email</button><br><br>
+                              <button> Save PDF </button>
+
+                        </form>
+            </div>  
+</body>
+<?php require('footer.php'); ?>
+</html>
