@@ -3,9 +3,13 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-    <title>GENERATEWARNINGLETTER</title>
+    <title>GENERATE WARNING LETTER</title>
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <script>
+    function displayAlert() {
+                                alert("Email sent successfully!");
+                              }
+    </script>
 </head>
 <style>
 
@@ -30,19 +34,27 @@
           cursor: pointer; 
     }
 
-    <center>
-          <FONT SIZE="1" COLOR="black" font face="Arial"> Copyright @ Student E-Attendance 
 </style
 
-<header>
-    <img src="kypjlogo.jpg" width="270px" heigth="90px">
-</header>
-
+<div class="topnav">
+    <section>
+            <header>
+                <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
+                    <div class="topnav" id="myTopnav">
+                <ul>
+                    <li><a href="adminHome.php">HOME</a></li>
+                    <li><a href="logout.php">LOG OUT</a></li>
+                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
+                </ul>
+            </header>
+        </section>
+    </div>
 
 <body>
             <div class="container">
 
-                        <form action="Generate.php" method="POST">
+                        
+            <form action="Generate.php#" method="POST">
 
                         <h1>Generate Student Warning Letter</h1>
 
@@ -72,9 +84,7 @@
                                    <textarea name="comment  " class="form-control" placeholder="Your comment" rows="10" cols="100" required></textarea>
 
                               </div><br>
-
-                              <button type="submit" class="btn btn-block btn-success">Send Email</button><br><br>
-                              <button> Save PDF </button>
+                                <button onclick="displayAlert()">Send Email</button>
 
                         </form>
             </div>  
