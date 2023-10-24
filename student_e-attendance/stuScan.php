@@ -30,7 +30,7 @@
         </style>
     </head>
     <body>
-    <div class="topnav">
+<div class="topnav">
     <section>
             <header>
                 <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
@@ -42,11 +42,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                <label>SCAN QR CODE</label>
                     <video id="preview" width="100%"></video>
                 </div>
                 <div class="col-md-6">
-                    <label>SCAN QR CODE</label>
-                    <input type="text" name="text" id="text" readonyy="" placeholder="scan qrcode" class="form-control">
+                    <label>QR CODE</label>
+                    <input type="text" name="text" id="text" readonyy="" placeholder="QR code" class="form-control">
+                    <br><br>
+                    <label>MANUALLY ENTER STUDENT QR CODE</label>
+                    <input type="number" name="qrtext" id="qrcode" placeholder="QR code" class="form-control">
+
                 </div>
             </div>
         </div>
