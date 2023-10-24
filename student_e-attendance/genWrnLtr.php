@@ -12,20 +12,22 @@
     </script>
 </head>
 <style>
-
-  .container {
-            width: 125%;
-            color: hsl(250, 60%, 15%);
-            padding: 0.3rem;
-            border: 2px solid #ccc;
-            border-radius: 0.10rem;
-            outline: none;
-            background:white;
-    }
+header {
+      background-color: black;
+      color: #fff;
+      padding-top: 80px;
+}
     body {
       background:#FFFDE7
     }
 
+    form{
+      width:80%
+      color: hsl(240, 54%, 15%)
+      border: 2px solid #ccc;
+      border-radius: 0.10rem;
+      outline: none;
+    }
     button{
           padding: 6px 20px;
           border: none;
@@ -39,7 +41,7 @@
 <div class="topnav">
     <section>
             <header>
-                <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
+            <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
                     <div class="topnav" id="myTopnav">
                 <ul>
                     <li><a href="adminHome.php">HOME</a></li>
