@@ -44,6 +44,7 @@
                     <div class="topnav" id="myTopnav">
                 <ul>
                     <li><a href="adminHome.php">HOME</a></li>
+                    <li><a href="generate.php">GENERATE QR CODE</a></li>
                     <li><a href="logout.php">LOG OUT</a></li>
                  <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
                 </ul>
