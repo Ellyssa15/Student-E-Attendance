@@ -23,8 +23,8 @@
             border-radius: 17px;
             margin-right: 5px;         
             font-size: 18px;
-            padding: 10px 50px;
-            margin: 10px 208px;
+            padding: 10px 30px;
+            margin: 10px 200px;
             border: none;
             outline: none;
             
@@ -60,5 +60,5 @@
         <button>GENERATE QR CODE</a></button> </a>
 </div>
 </body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 <?php require('footer.php'); ?>
