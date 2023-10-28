@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-    <title>GENERATEWARNINGLETTER</title>
+    <title>GENERATE WARNING LETTER</title>
     <link rel="stylesheet" href="header.css">
     <script>
     function displayAlert() {
@@ -51,7 +51,7 @@
     <br><br><br>
             <div class="container">
 
-            <form action="Generate.php" method="POST">
+            <form action="adminHome.php" method="POST">
 
                         <h1>Generate Student Warning Letter</h1>
                         <p>Fill out the form and your data will fill in a PDF</p>
