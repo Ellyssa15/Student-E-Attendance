@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>STUDENT ATTENDANCE</title>
+    <link rel="stylesheet" href="header.css">
+    <style>
+        body{
+            background-color: #FFFDE7;
+            background-repeat: no-repeat; 
+  	        background-size: cover;
+        }
+        table {
+            border-collapse: collapse;
+            margin: auto;
+            width: 80%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #F7D8B5;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+        button {
+          background-color: #F7D8B5;
+            border-radius: 17px;
+            margin:auto;         
+            font-size: 18px;
+            padding: 10px 30px;
+            border: none;
+            outline: none;
+            display: block;
+        }
+
+        button:hover{
+            background:#857F72
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <section>
+            <header>
+                <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
+                <div class="topnav" id="myTopnav">
+                    <ul>
+                        <li><a href="lectHome.php">HOME</a></li>
+                        <li><a href="logout.php">LOG OUT</a></li>
+                    </ul>
+                </div>
+            </header>
+        </section>
+    </div>
+    <br><br><br><br><div class="container">
+    <h2>STUDENT ATTENDANCE</h2>
+    <label>CHOOSE SUBJECT:</label>
+    <select name="subject" id="subject" class="form-control">
+    <option value="DDWD2653">DDWD2653</option>
+        <option value="DDWD3343">DDWD3343</option>
+        <option value="DDWD3723">DDWD3723</option>
+        <option value="DDWD3773">DDWD3773</option>
+        <option value="DDWD3783">DDWD3783</option>
+    </select>
+    <br><br>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>QR Code Image</th>
+            <th>Date</th>
+            <th>Time In</th>
+            <th>Attendance Status</th>
+        </tr>
+        <?php
+        require_once 'connection.php';
+        $query = mysqli_query($connection,"select * from student_attendance");
+        while($row = mysqli_fetch_array($query)){
+            $studentId = $row['studentId'];
+            $name = $row['name'];
+            $qrimage = $row['qrimage'];
+            $date = $row['date'];
+            $timeIn = $row['timeIn'];
+            $attendance = $row['attendance'];
+            ?>
+            <tr>
+                <td><?php echo $studentId; ?></td>
+                <td><?php echo $name; ?></td>
+                <td><img src="<?php echo $qrimage; ?>" alt="QR Code" width="100"></td>
+                <td><?php echo $date; ?></td>
+                <td><?php echo $timeIn; ?></td>
+                <td><?php echo $attendance; ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <br>
+    <button onclick="printAttendance()">PRINT</button>
+</div>
+
+<script>
+    function printAttendance() {
+        let subject = document.getElementById('subject').value;
+        // Send subject to server for printing
+        // ...
+        alert('Attendance printed for ' + subject);
+    }
+</script>
+</body>
+<br><br><br>
+<?php require('footer.php'); ?>
+</html>
