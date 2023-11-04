@@ -1,14 +1,14 @@
 <?php
-// Include database connection file
 include_once("connection.php");
 
 // Add student record
 if(isset($_POST['add'])) {
+    $studentId = $_POST['studentId'];
     $name = $_POST['name'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
     $email = $_POST['email'];
-    $result = mysqli_query($connection, "INSERT INTO stu_detail(name,noIC,noTel,email) VALUES('$name','$noIC','$noTel','$email')");
+    $result = mysqli_query($connection, "INSERT INTO stu_detail(studentId,name,noIC,noTel,email) VALUES('$studentId','$name','$noIC','$noTel','$email')");
     header("Location: manageStu.php");
 }
 
@@ -45,7 +45,7 @@ if(isset($_GET['delete'])) {
         table {
             border-collapse: collapse;
             margin: auto; /* Center the table */
-            width: 80%;
+            width: 100%;
         }
 
         th, td {
@@ -85,7 +85,7 @@ if(isset($_GET['delete'])) {
     </div>
     <br><br><br><br>
     <div class="container">
-        <h2>Student List</h2>
+        <h2>STUDENT LIST</h2>
         <table>
             <tr>
                 <th>Student ID</th>
@@ -112,8 +112,7 @@ if(isset($_GET['delete'])) {
                     <td><?php echo $noTel; ?></td>
                     <td><?php echo $email; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $studentId; ?>">Edit</a>
-                        <a href="delete.php?id=<?php echo $studentId; ?>">Delete</a>
+                        <a href="editStu.php?id=<?php echo $studentId; ?>">Edit</a>
                     </td>
                 </tr>
                 <?php
@@ -121,7 +120,24 @@ if(isset($_GET['delete'])) {
             ?>
         </table>
         <br>
-        <a href="add.php">Add Student</a>
+        <form method="post">
+            <label>Student ID:</label>
+            <input type="text" name="studentId" required><br>
+
+            <label>Name:</label>
+            <input type="text" name="name" required><br>
+
+            <label>IC Number:</label>
+            <input type="text" name="noIC" required><br>
+
+            <label>Telephone Number:</label>
+            <input type="text" name="noTel" required><br>
+
+            <label>Email:</label>
+            <input type="text" name="email" required><br>
+
+            <input type="submit" name="add" value="Add">
+        </form>
     </div>
 </body>
 <?php require('footer.php'); ?>
