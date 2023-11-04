@@ -54,8 +54,8 @@
 <H3>WELCOME ADMIN</H3>
 <br><br><br><br><br><br><br><br><br>
 <div class="button-container">
-    <a href="genWrnLtr.php" class="centered-button">
-        <button>GENERATE WARNING LETTER</a></button> </a>
+    <a href="manageLect.php" class="centered-button">
+        <button>MANAGE LECTURER</a></button> </a>
     <a href="stuList.php" class="centered-button">
         <button>GENERATE QR CODE</a></button> </a>
 </div>
