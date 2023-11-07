@@ -14,19 +14,18 @@ if(isset($_POST['add'])) {
 
 // Edit student record
 if(isset($_POST['update'])) {
-    $studentId = $_POST['studentId'];
     $name = $_POST['name'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
     $email = $_POST['email'];
-    $result = mysqli_query($connection, "UPDATE stu_detail SET name='$name',noIC='$noIC',noTel='$noTel',email='$email' WHERE studentId=$studentId");
+    $result = mysqli_query($connection, "UPDATE stu_detail SET noIC='$noIC',noTel='$noTel',email='$email' WHERE name=$name");
     header("Location: manageStu.php");
 }
 
 // Delete student record
 if(isset($_GET['delete'])) {
-    $studentId = $_GET['delete'];
-    $result = mysqli_query($connection, "DELETE FROM stu_detail WHERE studentId=$studentId");
+    $name = $_GET['delete'];
+    $result = mysqli_query($connection, "DELETE FROM stu_detail WHERE name=$name");
     header("Location: manageStu.php");
 }
 ?>
@@ -39,8 +38,8 @@ if(isset($_GET['delete'])) {
     <style>
         body{
             background-color: #FFFDE7;
-            background-repeat: no-repeat; 
-  	        background-size: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         table {
             border-collapse: collapse;
@@ -63,25 +62,21 @@ if(isset($_GET['delete'])) {
             text-align: center;
         }
         button {
-        display: block;
-        margin: auto;
+            display: block;
+            margin: auto;
         }
-
-    button {
-          background-color: #F7D8B5;
+        button {
+            background-color: #F7D8B5;
             border-radius: 17px;
-            margin: auto;         
+            margin: auto;
             font-size: 12px;
             padding: 10px 20px;
             border: none;
             outline: none;
-            
         }
-
         button:hover{
             background:#857F72
         }
-
     </style>
 </head>
 <body>
@@ -103,7 +98,6 @@ if(isset($_GET['delete'])) {
         <h2>Student List</h2>
         <table>
             <tr>
-                <th>Student ID</th>
                 <th>Name</th>
                 <th>IC Number</th>
                 <th>Telephone Number</th>
@@ -114,27 +108,27 @@ if(isset($_GET['delete'])) {
             require_once 'connection.php';
             $query = mysqli_query($connection,"select * from stu_detail");
             while($row = mysqli_fetch_array($query)){
-                $studentId = $row['studentId'];
                 $name = $row['name'];
                 $noIC = $row['noIC'];
                 $noTel = $row['noTel'];
                 $email = $row['email'];
-                ?>
-                <tr>
-                    <td><?php echo $studentId; ?></td>
-                    <td><?php echo $name; ?></td>
-                    <td><?php echo $noIC; ?></td>
-                    <td><?php echo $noTel; ?></td>
-                    <td><?php echo $email; ?></td>
-                    <td><a href="stuedit.php?id=<?php echo $studentId; ?>"><button>EDIT</button></a>
-                    <a href="delete.php?id=<?php echo $studentId; ?>"><button>DELETE</button></a></td>
-                </tr>
-                <?php
+            ?>
+            <tr>
+                <td><?php echo $name; ?></td>
+                <td><?php echo $noIC; ?></td>
+                <td><?php echo $noTel; ?></td>
+                <td><?php echo $email; ?></td>
+                <td>
+                    <a href="stuedit.php?id=<?php echo $name; ?>"><button>EDIT</button></a>
+                    <a href="delete.php?id=<?php echo $name; ?>"><button>DELETE</button></a>
+                </td>
+            </tr>
+            <?php
             }
             ?>
         </table>
         <br>
-        <td><a href="addstu.php?id=<?php echo $studentId; ?>"><button>ADD STUDENT</button></a></td>
+        <td><a href="addstu.php?id=<?php echo $name; ?>"><button>ADD STUDENT</button></a></td>
     </div>
 </body>
 <?php require('footer.php'); ?>
