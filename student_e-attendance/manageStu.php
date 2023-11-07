@@ -1,14 +1,14 @@
 <?php
+// Include database connection file
 include_once("connection.php");
 
 // Add student record
 if(isset($_POST['add'])) {
-    $studentId = $_POST['studentId'];
     $name = $_POST['name'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
     $email = $_POST['email'];
-    $result = mysqli_query($connection, "INSERT INTO stu_detail(studentId,name,noIC,noTel,email) VALUES('$studentId','$name','$noIC','$noTel','$email')");
+    $result = mysqli_query($connection, "INSERT INTO stu_detail(name,noIC,noTel,email) VALUES('$name','$noIC','$noTel','$email')");
     header("Location: manageStu.php");
 }
 
@@ -45,7 +45,7 @@ if(isset($_GET['delete'])) {
         table {
             border-collapse: collapse;
             margin: auto; /* Center the table */
-            width: 100%;
+            width: 80%;
         }
 
         th, td {
@@ -63,9 +63,24 @@ if(isset($_GET['delete'])) {
             text-align: center;
         }
         button {
-    display: block;
-    margin: auto;
-}
+        display: block;
+        margin: auto;
+        }
+
+    button {
+          background-color: #F7D8B5;
+            border-radius: 17px;
+            margin: auto;         
+            font-size: 12px;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            
+        }
+
+        button:hover{
+            background:#857F72
+        }
 
     </style>
 </head>
@@ -85,7 +100,7 @@ if(isset($_GET['delete'])) {
     </div>
     <br><br><br><br>
     <div class="container">
-        <h2>STUDENT LIST</h2>
+        <h2>Student List</h2>
         <table>
             <tr>
                 <th>Student ID</th>
@@ -111,33 +126,15 @@ if(isset($_GET['delete'])) {
                     <td><?php echo $noIC; ?></td>
                     <td><?php echo $noTel; ?></td>
                     <td><?php echo $email; ?></td>
-                    <td>
-                        <a href="editStu.php?id=<?php echo $studentId; ?>">Edit</a>
-                    </td>
+                    <td><a href="stuedit.php?id=<?php echo $studentId; ?>"><button>EDIT</button></a>
+                    <a href="delete.php?id=<?php echo $studentId; ?>"><button>DELETE</button></a></td>
                 </tr>
                 <?php
             }
             ?>
         </table>
         <br>
-        <form method="post">
-            <label>Student ID:</label>
-            <input type="text" name="studentId" required><br>
-
-            <label>Name:</label>
-            <input type="text" name="name" required><br>
-
-            <label>IC Number:</label>
-            <input type="text" name="noIC" required><br>
-
-            <label>Telephone Number:</label>
-            <input type="text" name="noTel" required><br>
-
-            <label>Email:</label>
-            <input type="text" name="email" required><br>
-
-            <input type="submit" name="add" value="Add">
-        </form>
+        <td><a href="addstu.php?id=<?php echo $studentId; ?>"><button>ADD STUDENT</button></a></td>
     </div>
 </body>
 <?php require('footer.php'); ?>
