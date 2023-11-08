@@ -43,6 +43,9 @@
         button:hover{
             background:#857F72
         }
+        .subject-container {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -59,16 +62,19 @@
             </header>
         </section>
     </div>
-    <br><br><br><br><div class="container">
+    <br><div class="container">
     <h2>STUDENT ATTENDANCE</h2>
-    <label>CHOOSE SUBJECT:</label>
-    <select name="subject" id="subject" class="form-control">
-    <option value="DDWD2653">DDWD2653</option>
-        <option value="DDWD3343">DDWD3343</option>
-        <option value="DDWD3723">DDWD3723</option>
-        <option value="DDWD3773">DDWD3773</option>
-        <option value="DDWD3783">DDWD3783</option>
-    </select>
+    <br>
+    <div class="subject-container">
+        <label>CHOOSE SUBJECT:</label>
+        <select name="subject" id="subject" class="form-control">
+            <option value="DDWD2653">DDWD2653</option>
+            <option value="DDWD3343">DDWD3343</option>
+            <option value="DDWD3723">DDWD3723</option>
+            <option value="DDWD3773">DDWD3773</option>
+            <option value="DDWD3783">DDWD3783</option>
+        </select>
+    </div>
     <br><br>
     <table>
         <tr>
