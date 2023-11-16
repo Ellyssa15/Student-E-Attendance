@@ -9,12 +9,12 @@ $noTel = "";
 $email = "";
 
 // Retrieve student record for editing
-if(isset($_GET['name'])) {
-    $name = $_GET['name'];
-    $result = mysqli_query($connection, "SELECT * FROM stu_detail WHERE name=$name");
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $studentData = mysqli_query($connection, "SELECT * FROM stu_detail WHERE name='$id'");
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        $data = mysqli_fetch_assoc($result);
+    if ($studentData && mysqli_num_rows($studentData) > 0) {
+        $data = mysqli_fetch_assoc($studentData);
         $name = $data['name'];
         $noIC = $data['noIC'];
         $noTel = $data['noTel'];
@@ -22,13 +22,13 @@ if(isset($_GET['name'])) {
     }
 }
 
-// Update student record
+/// Update student record
 if(isset($_POST['update'])) {
     $name = $_POST['name'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
     $email = $_POST['email'];
-    $update_query = "UPDATE stu_detail SET noIC='$noIC', noTel='$noTel', email='$email' WHERE name=$name";
+    $update_query = "UPDATE stu_detail SET noIC='$noIC', noTel='$noTel', email='$email' WHERE name='$name'";
     $result = mysqli_query($connection, $update_query);
 
     if ($result) {
@@ -115,18 +115,16 @@ if(isset($_POST['update'])) {
     <div class="container">
         <h2>Edit Student</h2>
         <div class="form">
-            <form method="post" action="">
-                <p>Name<input type="text" name="name" value="<?php echo $name; ?>"></p>
-                <p>No.Ic<input type="text" name="noIC" value="<?php echo $noIC; ?>"></p>
-                <p>No.Tel<input type="tel" name="noTel" value="<?php echo $noTel; ?>"></p>
-                <p>Email <input type="email" name="email" value="<?php echo $email; ?>"></p>
-                <p><br>
-                    <input type="submit" name="update" value="Edit Student">
-                    <button type="reset">Reset</button>
-                </p>
-            </form>
-        </div>
-    </div>
+        <form method="post" action="">
+        <p>Name<input type="text" name="name" value="<?php echo $name; ?>"></p>
+        <p>No.Ic<input type="text" name="noIC" value="<?php echo $noIC; ?>"></p>
+        <p>No.Tel<input type="tel" name="noTel" value="<?php echo $noTel; ?>"></p>
+        <p>Email <input type="email" name="email" value="<?php echo $email; ?>"></p>
+        <p><br>
+            <input type="submit" name="update" value="Edit Student">
+            <button type="reset">Reset</button>
+        </p>
+    </form>
 </body>
 <?php require('footer.php'); ?>
 </html>
