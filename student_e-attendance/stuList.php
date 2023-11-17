@@ -16,7 +16,6 @@ if(isset($_POST['generate_qr'])) {
     }
 }
 
-// Display list of students with a "Generate QR" button
 $query = mysqli_query($connection,"SELECT * FROM stu_detail");
 ?>
 
