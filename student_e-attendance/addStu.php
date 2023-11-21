@@ -4,11 +4,11 @@ include("connection.php");
 
 // Add student record
 if(isset($_POST['add'])) {
+    $studentId = $_POST['studentId'];
     $name = $_POST['name'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
-    $email = $_POST['email'];
-    $result = mysqli_query($connection, "INSERT INTO stu_detail(name,noIC,noTel,email) VALUES('$name','$noIC','$noTel','$email')");
+    $result = mysqli_query($connection, "INSERT INTO stu_detail(studentId,name,noIC,noTel) VALUES('$studentId','$name','$noIC','$noTel')");
     header("Location: manageStu.php");
 }
 ?>
@@ -90,10 +90,10 @@ if(isset($_POST['add'])) {
         <h2>Add Student</h2>
         <div class="form">
             <form method="post" action="">
+                <p>Student ID <input type="text" name="studentId"></p>
                 <p>Name<input type="text" name="name"></p>
-                <p>No.Ic<input type="text" name="noIC"></p>
-                <p>No. Tel<input type="text" name="noTel"></p>
-                <p>Email <input type="email" name="email"></p>
+                <p>No.IC<input type="text" name="noIC"></p>
+                <p>No.Tel<input type="text" name="noTel"></p>
                 <p><br>
                     <input type="submit" name="add" value="Add Student">
                     <button type="reset">Reset</button>
