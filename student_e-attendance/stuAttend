@@ -62,63 +62,54 @@
             </header>
         </section>
     </div>
-    <br><div class="container">
+    <br><br>
+    <div class="container">
     <h2>STUDENT ATTENDANCE</h2>
-    <br>
-    <div class="subject-container">
-        <label>CHOOSE SUBJECT:</label>
-        <select name="subject" id="subject" class="form-control">
-            <option value="DDWD2653">DDWD2653</option>
-            <option value="DDWD3343">DDWD3343</option>
-            <option value="DDWD3723">DDWD3723</option>
-            <option value="DDWD3773">DDWD3773</option>
-            <option value="DDWD3783">DDWD3783</option>
-        </select>
-    </div>
     <br><br>
     <table>
         <tr>
             <th>Student ID</th>
             <th>Name</th>
-            <th>QR Code Image</th>
+            <th>QR Code</th>
             <th>Date</th>
             <th>Time In</th>
             <th>Attendance Status</th>
         </tr>
         <?php
         require_once 'connection.php';
-        $query = mysqli_query($connection,"select * from student_attendance");
+        require_once 'phpqrcode/qrlib.php';
+        $query = mysqli_query($connection,"select * from stu_attend");
         while($row = mysqli_fetch_array($query)){
             $studentId = $row['studentId'];
             $name = $row['name'];
-            $qrimage = $row['qrimage'];
+            $qrtext = $row['qrtext'];
             $date = $row['date'];
-            $timeIn = $row['timeIn'];
-            $attendance = $row['attendance'];
+            $time = $row['time'];
+            $status = $row['status'];
             ?>
             <tr>
                 <td><?php echo $studentId; ?></td>
                 <td><?php echo $name; ?></td>
-                <td><img src="<?php echo $qrimage; ?>" alt="QR Code" width="100"></td>
+                <td><?php echo $qrtext; ?></td>
                 <td><?php echo $date; ?></td>
                 <td><?php echo $timeIn; ?></td>
-                <td><?php echo $attendance; ?></td>
+                <td><?php echo $status; ?></td>
             </tr>
             <?php
         }
         ?>
     </table>
     <br>
-    <button onclick="printAttendance()">PRINT</button>
+    <button onclick="printContent()">PRINT</button>
+    <br>
+        <a href="stuScan.php" class="centered-button">
+        <button>SCAN QR</a></button> </a>
 </div>
 
 <script>
-    function printAttendance() {
-        let subject = document.getElementById('subject').value;
-        // Send subject to server for printing
-        // ...
-        alert('Attendance printed for ' + subject);
-    }
+    function printContent() {
+  window.print();
+}
 </script>
 </body>
 <br><br><br>
