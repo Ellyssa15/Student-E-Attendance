@@ -33,7 +33,7 @@
         </section>
     </div>
 <br>
-</body>
+</body> 
 
 <div class="container">
 <div class="row">
@@ -43,51 +43,32 @@
   <br><br><br>
 
   <div class="form-group row d-flex align-items-center mb-1">
+  <?php
+session_start();
+include("connection.php");
 
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>FULL NAME :</strong>
-    </label>
+if (!isset($_SESSION['username'])) {
+    header("Location: stuLogin.php");
+    exit();
+}
 
-    <div class="col-lg-6">NUR NAJWA ALIEYA BINTI ROMZI</div>
-    </div>
+$username = $_SESSION['username'];
 
-    <div class="form-group row d-flex align-items-center mb-1">
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>NO MATRIC :</strong>
-    </label>
-    
-    <div class="col-lg-6">DDWD2021/060273</div>
-    </div>
+$sql = "SELECT * FROM stu_detail WHERE studentid = '$username'";
+$result = $connection->query($sql);
 
-    <div class="form-group row d-flex align-items-center mb-1">
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>NO IC :</strong>
-    </label>
-
-    <div class="col-lg-6">031204-14-0438</div>
-    </div>
-
-    <div class="form-group row d-flex align-items-center mb-1">
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>NO TELEPHONE :</strong>
-    </label>
-
-    <div class="col-lg-6">013-8020153</div>
-    </div>
-
-    <div class="form-group row d-flex align-items-center mb-1">
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>EMAIL :</strong>
-    </label>
-
-    <div class="col-lg-6">njwaliyaa@gmail.com</div>
-    </div>
-
-    <div class="form-group row d-flex align-items-center mb-1">
-  <label class="col-sm-2 form-control-label d-flex justify-content-lg-end">
-    <strong>QR CODE :</strong>
-    </label>
-
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    echo "Welcome, " . $row['name'] . "! Your details are: <br>";
+    echo "Student ID: " . $row['studentId'] . "<br>";
+    echo "Name: " . $row['name'] . "<br>";
+    echo "IC Number: " . $row['noIC'] . "<br>";
+    echo "Telephone Number: " . $row['noTel'] . "<br>";
+    echo "<img src='" . $row['qrimage'] . "' alt='QR Code'>";
+} else {
+    echo "Error fetching student details";
+}
+?>
     <div class="col-lg-6"></div>
     </div>
     <br><br><br><br><br>
@@ -95,6 +76,7 @@
 </div>
 </div>
 </div>
-</html>
 <br><br>
     <?php require('footer.php'); ?>
+
+</html>
