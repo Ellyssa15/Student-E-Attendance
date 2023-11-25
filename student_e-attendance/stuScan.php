@@ -1,3 +1,22 @@
+<?php
+include("connection.php");
+
+if (isset($_POST['add'])) {
+    $studentId = $_POST['studentId'];
+    $name = $_POST['name'];
+    $qrtext = $_POST['qrtext'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+    $status = $_POST['status'];
+
+    $sql = "UPDATE stu_attend SET name = ?, qrtext = ?, date = ?, time = ?, status = ? WHERE studentId = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $studentId, $name, $qrtext, $date, $time, $status);
+    $stmt->execute();
+
+    header("Location: stuAttend.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,16 +61,6 @@
             </header>
         </section>
     </div>
-    <div class="container">
-        <h2>STUDENT SCAN QR CODE</h2>
-        <label>SUBJECT:</label>
-        <select name="subject" id="subject" class="form-control">
-            <option value="DDWD2653">DDWD2653</option>
-            <option value="DDWD3343">DDWD3343</option>
-            <option value="DDWD3723">DDWD3723</option>
-            <option value="DDWD3773">DDWD3773</option>
-            <option value="DDWD3783">DDWD3783</option>
-        </select>
         <br>
         <label>SCAN QR CODE:</label>
         <input type="radio" name="scan" value="auto" checked> Auto
@@ -101,11 +110,28 @@
         }
 
         function saveQRCode() {
-            let qrCode = qrcode.value;
-            // Send qrCode to server for saving
-            // ...
-            alert('QR code saved: ' + qrCode);
-        }
+  let qrCode = qrcode.value;
+
+  // Send qrCode to server for saving
+  fetch('saveQRCodeToDatabase.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'qrCode=' + qrCode
+  })
+  .then(response => response.text())
+  .then(data => {
+    alert('QR code saved: ' + qrCode);
+    // Redirect to stuAttend.php or perform other actions
+    window.location.href = 'stuAttend.php';
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+
 
         let scanRadio = document.getElementsByName('scan');
         for (let i = 0; i < scanRadio.length; i++) {
