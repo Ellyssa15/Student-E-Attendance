@@ -27,7 +27,7 @@ if(isset($_POST['add'])) {
         form {
             margin: auto;
             width: 50%;
-            padding: 20px;
+            padding: 50px;
             border: 1px solid #B0C4DE;
             border-radius: 5px;
             background-color: #F7D8B5;
@@ -41,15 +41,17 @@ if(isset($_POST['add'])) {
             border-radius: 4px;
             box-sizing: border-box;
         }
-        button[type=submit] {
+        input[type=submit]{
             background-color: #857F72;
             color: white;
             padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            float: right;
+            float: left;
+            margin-right: 10px;
         }
+
         button[type=submit]:hover {
             background-color: #B0C4DE;
         }
