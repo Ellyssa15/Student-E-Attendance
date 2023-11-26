@@ -11,7 +11,7 @@
         }
     h3{
             font-style: oblique;
-            font-size: 30px;
+            font-size: 50px;
             text-align: center;
             display: flex;
             justify-content: center;
@@ -20,11 +20,10 @@
         
     button {
           background-color: #F7D8B5;
-            border-radius: 17px;
-            margin-right: 5px;         
+            border-radius: 25px;
             font-size: 18px;
-            padding: 10px 30px;
-            margin: 10px 200px;
+            padding: 15px 40px;
+            margin: 15px 245px;
             border: none;
             outline: none;
             
@@ -50,15 +49,15 @@
             </header>
         </section>
     </div>
-    <br><br><br>
+    <br><br>
 <H3>WELCOME ADMIN</H3>
 <br><br><br><br><br><br><br><br><br>
 <div class="button-container">
     <a href="manageLect.php" class="centered-button">
         <button>MANAGE LECTURER</a></button> </a>
     <a href="stuList.php" class="centered-button">
-        <button>GENERATE QR CODE</a></button> </a>
+        <button>MANAGE STUDENT</a></button> </a>
 </div>
 </body>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <?php require('footer.php'); ?>
