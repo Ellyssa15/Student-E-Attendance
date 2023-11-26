@@ -35,7 +35,7 @@
 
         h3{
             font-style: georgia;
-            font-size: 60px;
+            font-size: 50px;
             display: flex;
             justify-content: center;
             height: 50px;
@@ -55,18 +55,18 @@
     </head> 
     <body> 
     <br>
-    <h3>WELCOME TO E-ATTENDANCE</h3><br>
+    <h3>WELCOME TO STUDENT E-ATTENDANCE</h3><br>
     <br><br><br><br><br><br>
 
     <div class="button-container">
     <a href="stuLogin.php" class="centered-button">
-        <button>Student</a></button> </a>
+        <button>STUDENT</a></button> </a>
     <a href="lectLogin.php" class="centered-button">
-        <button>Lecturer</a></button> </a>
+        <button>LECTURER</a></button> </a>
     <a href="adminLogin.php" class="centered-button">
-        <button>Admin</a></button> </a>
+        <button>ADMIN</a></button> </a>
 </div>
 </body>
 </html>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <?php require('footer.php'); ?>
