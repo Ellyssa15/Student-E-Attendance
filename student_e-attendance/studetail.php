@@ -54,7 +54,7 @@ if (!isset($_SESSION['username'])) {
 
 $username = $_SESSION['username'];
 
-$sql = "SELECT * FROM stu_detail WHERE studentid = '$username'";
+$sql = "SELECT * FROM stu_detail WHERE studentId = '$username'";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
@@ -66,7 +66,6 @@ if ($result->num_rows > 0) {
     echo "Telephone Number: " . $row['noTel'] . "<br>";
     echo "<img src='" . $row['qrimage'] . "' alt='QR Code'>";
 } else {
-    echo "Error fetching student details";
 }
 ?>
     <div class="col-lg-6"></div>
