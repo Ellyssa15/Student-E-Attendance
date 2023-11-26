@@ -1,8 +1,6 @@
 <?php
-// Include database connection file
 include_once("connection.php");
 
-// Generate QR code for students who do not have one
 if(isset($_POST['generate_qr'])) {
     $studentId = $_POST['studentId'];
     $result = mysqli_query($connection, "SELECT * FROM stu_detail WHERE studentId=$studentId");
@@ -45,7 +43,7 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
 
         th {
             background-color: #F7D8B5;
-            color: white;
+            color: #78491E;
         }
         h1 {
             text-align: center;
@@ -76,14 +74,14 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
                 <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
                 <div class="topnav" id="myTopnav">
                     <ul>
-                        <li><a href="lectHome.php">HOME</a></li>
+                        <li><a href="adminHome.php">HOME</a></li>
                         <li><a href="logout.php">LOG OUT</a></li>
                     </ul>
                 </div>
             </header>
         </section>
     </div>
-    <br><br><br><br>
+    <br><br>
     <div class="container">
         <h1>STUDENT LIST</h1>
         <br>
@@ -91,6 +89,7 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
             <tr>
                 <th>Student ID</th>
                 <th>Name</th>
+                <th>Course</th>
                 <th>IC Number</th>
                 <th>Telephone Number</th>
                 <th>QR Text</th>
@@ -100,6 +99,7 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
             <?php while($row = mysqli_fetch_array($query)){ 
                 $studentId = $row['studentId'];
                 $name = $row['name'];
+                $course = $row['course'];
                 $noIC = $row['noIC'];
                 $noTel = $row['noTel'];
                 $qrimage = $row['qrimage'];
@@ -108,6 +108,7 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
                 <tr>
                     <td><?php echo $studentId; ?></td>
                     <td><?php echo $name; ?></td>
+                    <td><?php echo $course; ?></td>
                     <td><?php echo $noIC; ?></td>
                     <td><?php echo $noTel; ?></td>
                     <td><?php echo $qrtext; ?></td>
@@ -119,14 +120,16 @@ $query = mysqli_query($connection,"SELECT * FROM stu_detail");
                                 <button type="submit" name="generate_qr">Generate</button>
                             </form>
                         <?php endif; ?>
+                        <a href="stuEdit.php?id=<?php echo $studentId; ?>"><button>EDIT</button></a>
+                        <a href="deleteQR.php?id=<?php echo $studentId; ?>"><button>DELETE</button></a>
                     </td>
                 </tr>
             <?php } ?>
         </table>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br>
     <td><a href="generate.php?id=<?php echo $studentId; ?>"><button>GENERATE STUDENT QR</button></a></td>
 </body>
-<br><br><br><br><br><br>
+<br><br>
 <?php require('footer.php'); ?>
 </html>
