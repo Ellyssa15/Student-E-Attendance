@@ -1,14 +1,13 @@
 <?php
-// Include database connection file
 include("connection.php");
 
-// Add student record
 if(isset($_POST['add'])) {
     $lecturerId = $_POST['lecturerId'];
     $name = $_POST['name'];
+    $course = $_POST['course'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
-    $result = mysqli_query($connection, "INSERT INTO lect_detail(lecturerId,name,noIC,noTel) VALUES('$lecturerId','$name','$noIC','$noTel')");
+    $result = mysqli_query($connection, "INSERT INTO lect_detail(lecturerId,name,course,noIC,noTel) VALUES('$lecturerId','$name','$course','$noIC','$noTel')");
     header("Location: manageLect.php");
 }
 ?>
@@ -87,22 +86,33 @@ if(isset($_POST['add'])) {
             </header>
         </section>
     </div>
-    <br><br><br><br>
+    <br><br>
     <div class="container">
-        <h2>Add Lecturer</h2>
+        <h2>ADD LECTURER</h2><br>
         <div class="form">
             <form method="post" action="">
-                <p>Lecturer Id<input type="text" name="lecturerId"></p>
-                <p>Name<input type="text" name="name"></p>
-                <p>No.Ic<input type="text" name="noIC"></p>
-                <p>No. Tel<input type="text" name="noTel"></p>
-                <p><br>
+                <p>Lecturer ID: <input type="text" name="lecturerId"></p>
+                <p>Name: <input type="text" name="name"></p>
+                <div class="form-group">
+                        <label>Choose Course: </label><br><br>
+                        <input type="radio" id="DDWD" name="course" value="DDWD">
+                        <label for="DDWD">DDWD</label>
+                        <input type="radio" id="DDWG" name="course" value="DDWG">
+                        <label for="DDWG">DDWG</label>
+                        <input type="radio" id="DSM" name="course" value="DSM">
+                        <label for="DSM">DSM</label>
+                        <input type="radio" id="DID" name="course" value="DID">
+                        <label for="DID">DID</label>
+                    </div><br>
+                    <p>IC Number: <input type="text" name="noIC"></p>
+                    <p>Telephone Number: <input type="text" name="noTel"></p>
+                    <p>
                     <input type="submit" name="add" value="Add Lecturer">
                     <button type="reset">Reset</button>
                 </p>
             </form>
         </div>
     </div>
-</body>
+</body><br><br><br>
 <?php require('footer.php'); ?>
 </html>
