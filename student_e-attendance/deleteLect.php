@@ -2,7 +2,6 @@
 include_once("connection.php");
 
 if(isset($_GET['id'])) {
-    // Get the student's name from the URL parameter
     $lecturerId = $_GET['id'];
 
     // Prepare the DELETE query with a parameterized statement
@@ -27,7 +26,7 @@ if(isset($_GET['id'])) {
         echo "Error preparing statement: " . $connection->error;
     }
 } else {
-    echo "Invalid request. Please provide a lecturer ID.";
+    echo "Invalid request. Please provide a student ID.";
 }
 
 // Close the connection
