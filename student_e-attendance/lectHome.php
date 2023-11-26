@@ -25,7 +25,7 @@
             font-size: 18px;
             background-color: #F7D8B5;
             padding: 15px 50px;
-            margin: 10px 248px;
+            margin: 10px 50px;
             border: none;
             outline: none;
         }
@@ -42,15 +42,6 @@
             height: 50px;
         }
 
-        p {
-            position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 40px;
-            font-family: italic;
-            font-size: 25px;
-        }
   
         </style>
     </head> 
@@ -78,8 +69,8 @@
     <a href="stuAttend.php" class="centered-button">
         <button>STUDENT ATTENDANCE</a></button> </a>
 
-    <a href="managestu.php" class="centered-button">
-        <button>MANAGE STUDENT</a></button> </a>
+    <a href="stuScan.php" class="centered-button">
+        <button>STUDENT SCAN QR CODE</a></button> </a>
 </div>
 </body>
 </html>
