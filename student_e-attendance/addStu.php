@@ -1,14 +1,14 @@
 <?php
-// Include database connection file
 include("connection.php");
 
 // Add student record
 if(isset($_POST['add'])) {
     $studentId = $_POST['studentId'];
     $name = $_POST['name'];
+    $course = $_POST['course'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
-    $result = mysqli_query($connection, "INSERT INTO stu_detail(studentId,name,noIC,noTel) VALUES('$studentId','$name','$noIC','$noTel')");
+    $result = mysqli_query($connection, "INSERT INTO stu_detail(studentId,name,course,noIC,noTel) VALUES('$studentId','$name','$course','$noIC','$noTel')");
     header("Location: manageStu.php");
 }
 ?>
@@ -27,7 +27,7 @@ if(isset($_POST['add'])) {
         form {
             margin: auto;
             width: 50%;
-            padding: 50px;
+            padding: 20px;
             border: 1px solid #B0C4DE;
             border-radius: 5px;
             background-color: #F7D8B5;
@@ -41,17 +41,16 @@ if(isset($_POST['add'])) {
             border-radius: 4px;
             box-sizing: border-box;
         }
-        input[type=submit]{
+        button[type=submit] {
             background-color: #857F72;
             color: white;
             padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            float: left;
-            margin-right: 10px;
+            float: right;
         }
-        input [type=submit]:hover {
+        button[type=submit]:hover {
             background-color: #B0C4DE;
         }
         button[type=reset] {
@@ -88,13 +87,24 @@ if(isset($_POST['add'])) {
     </div>
     <br><br><br><br>
     <div class="container">
-        <h2>Add Student</h2>
+        <h2>ADD STUDENT</h2>
         <div class="form">
             <form method="post" action="">
                 <p>Student ID <input type="text" name="studentId"></p>
                 <p>Name<input type="text" name="name"></p>
-                <p>No.IC<input type="text" name="noIC"></p>
-                <p>No.Tel<input type="text" name="noTel"></p>
+                <div class="form-group">
+                        <label>Choose Course</label><br>
+                        <input type="radio" id="DDWD" name="course" value="DDWD">
+                        <label for="DDWD">DDWD</label>
+                        <input type="radio" id="DDWG" name="course" value="DDWG">
+                        <label for="DDWG">DDWG</label>
+                        <input type="radio" id="DSM" name="course" value="DSM">
+                        <label for="DSM">DSM</label>
+                        <input type="radio" id="DID" name="course" value="DID">
+                        <label for="DID">DID</label>
+                    </div><br>
+                <p>IC Number<input type="text" name="noIC"></p>
+                <p>Telephone Number<input type="text" name="noTel"></p>
                 <p><br>
                     <input type="submit" name="add" value="Add Student">
                     <button type="reset">Reset</button>
