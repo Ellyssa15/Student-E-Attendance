@@ -1,5 +1,4 @@
 <?php
-// Include database connection file
 include("connection.php");
 
 // Initialize student data
