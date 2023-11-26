@@ -1,14 +1,13 @@
 <?php
-// Include database connection file
 include_once("connection.php");
 
 // Add lecturer record
 if(isset($_POST['add'])) {
     $name = $_POST['name'];
+    $course = $_POST['course'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
-    $email = $_POST['email'];
-    $result = mysqli_query($connection, "INSERT INTO lect_detail(name,noIC,noTel,email) VALUES('$name','$noIC','$noTel','$email')");
+    $result = mysqli_query($connection, "INSERT INTO lect_detail(name,course,noIC,noTel) VALUES('$name','$course','$noIC','$noTel')");
     header("Location: manageLect.php");
 }
 
@@ -16,10 +15,10 @@ if(isset($_POST['add'])) {
 if(isset($_POST['update'])) {
     $lecturerId = $_POST['lecturerId'];
     $name = $_POST['name'];
+    $course = $_POST['course'];
     $noIC = $_POST['noIC'];
     $noTel = $_POST['noTel'];
-    $email = $_POST['email'];
-    $result = mysqli_query($connection, "UPDATE lect_detail SET name='$name',noIC='$noIC',noTel='$noTel',email='$email' WHERE lecturerId=$lecturerId");
+    $result = mysqli_query($connection, "UPDATE lect_detail SET name='$name',course='$course',noIC='$noIC',noTel='$noTel' WHERE lecturerId=$lecturerId");
     header("Location: manageLect.php");
 }
 
@@ -59,7 +58,7 @@ if(isset($_GET['delete'])) {
             background-color: #F7D8B5;
             color: white;
         }
-        h2 {
+        h1 {
             text-align: center;
         }
 
@@ -92,23 +91,24 @@ if(isset($_GET['delete'])) {
                 <a href="#" class="logo"><img src="logokypj.png" width="200px" heigth="150px"></a>
                 <div class="topnav" id="myTopnav">
                     <ul>
-                        <li><a href="lectHome.php">HOME</a></li>
+                        <li><a href="adminHome.php">HOME</a></li>
                         <li><a href="logout.php">LOG OUT</a></li>
                     </ul>
                 </div>
             </header>
         </section>
     </div>
-    <br><br><br><br>
+    <br><br>
     <div class="container">
-        <h2>Lecturer List</h2>
+        <h1>LECTURER DETAILS</h1>
+        <br><br>
         <table>
             <tr>
                 <th>Lecturer Id</th>
                 <th>Name</th>
+                <th>Course</th>
                 <th>IC Number</th>
                 <th>Telephone Number</th>
-                <th>Email</th>
                 <th>Actions</th>
             </tr>
             <?php
@@ -117,18 +117,18 @@ if(isset($_GET['delete'])) {
             while($row = mysqli_fetch_array($query)){
                 $lecturerId = $row['lecturerId'];
                 $name = $row['name'];
+                $course = $row['course'];
                 $noIC = $row['noIC'];
                 $noTel = $row['noTel'];
-                $email = $row['email'];
                 ?>
                 <tr>
                     <td><?php echo $lecturerId; ?></td>
                     <td><?php echo $name; ?></td>
+                    <td><?php echo $course; ?></td>
                     <td><?php echo $noIC; ?></td>
                     <td><?php echo $noTel; ?></td>
-                    <td><?php echo $email; ?></td>
-                    <td><a href="edit.php?id=<?php echo $lecturerId; ?>"><button>EDIT</button></a>
-                    <a href="delete.php?id=<?php echo $lecturerId; ?>"><button>DELETE</button></a></td>
+                    <td><a href="editLect.php?id=<?php echo $lecturerId; ?>"><button>EDIT</button></a>
+                    <a href="deleteLect.php?id=<?php echo $lecturerId; ?>"><button>DELETE</button></a></td>
                 </tr>
                 <?php
             }
@@ -138,5 +138,6 @@ if(isset($_GET['delete'])) {
         <td><a href=addLect.php><button>ADD LECTURER</button></a></td>
     </div>
 </body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php require('footer.php'); ?>
 </html>
