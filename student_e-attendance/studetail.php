@@ -7,12 +7,18 @@
             background: url(backgroundlogin.jpg);
             background-repeat: no-repeat; 
   	        background-size: cover;
-            font-family: "Montserrat", sans-serif;
             font-size: 1rem;
             font-weight: 500;
             line-height: 1.5;
             color: #212529;
             text-align: center;
+             }
+             h1{
+                font-style: normal;
+                font-size: 45px;
+                display: flex;
+                justify-content: center;
+                height: 50px;
              }
         .mb-1, .my-1 {
          margin-bottom: 0.25rem!important;}
