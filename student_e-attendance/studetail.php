@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="header.css">
         <style>
              body{
-            background-color: #FFFDE7;
+            background: url(backgroundlogin.jpg);
             background-repeat: no-repeat; 
   	        background-size: cover;
             font-family: "Montserrat", sans-serif;
@@ -38,7 +38,7 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-2">
-  <div class="col-sm-8" style="border: 2px solid black;padding:5px; text-align: center;">
+  <div class="col-sm-8" style="padding:30px; text-align: center; ">
    <h1>STUDENT DETAIL</h1>
   <br><br><br>
 
@@ -47,24 +47,27 @@
 session_start();
 include("connection.php");
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['studentId'])) {
     header("Location: stuLogin.php");
     exit();
 }
 
-$username = $_SESSION['username'];
+$studentId = $_SESSION['studentId'];
 
-$sql = "SELECT * FROM stu_detail WHERE studentId = '$username'";
+$sql = "SELECT * FROM stu_detail WHERE studentId = '$studentId'";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    echo "Welcome, " . $row['name'] . "! Your details are: <br>";
-    echo "Student ID: " . $row['studentId'] . "<br>";
-    echo "Name: " . $row['name'] . "<br>";
-    echo "IC Number: " . $row['noIC'] . "<br>";
-    echo "Telephone Number: " . $row['noTel'] . "<br>";
-    echo "<img src='" . $row['qrimage'] . "' alt='QR Code'>";
+    echo "<div style='text-align: left ;margin-left: 300px; font-size: 22px;font-family:ComicSansMS,ComicSans,cursive;'>";
+    echo "<span style='font-weight: bold;'>Welcome,</span>  " . $row['name'] . "<span style='font-weight: bold;'>!!!</span><br><br>";
+    echo "<span style='font-weight: bold;'>MATRIC NO:</span> " . $row['studentId'] . "<br><br>";
+    echo "<span style='font-weight: bold;'>NAME:</span> " . $row['name'] . "<br><br>";
+    echo "<span style='font-weight: bold;'>IC NUMBER:</span> " . $row['noIC'] . "<br><br>";
+    echo "<span style='font-weight: bold;'>TELEPHONE NUMBER:</span> " . $row['noTel'] . "<br><br>";
+    echo "<span style='font-weight: bold;'>QR CODE:</span><br>";
+    echo "<img src='" . $row['qrimage'] . "' alt='QR Code' style='max-width: 200px; height: 200;'>";
+    echo "</div>";
 } else {
 }
 ?>
